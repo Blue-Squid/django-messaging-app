@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            SCN Login
+        </title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css\login.css' %}" type="text/css">
+    </head>
+    <body>
+        {% if form.errors %}
+            <div class="alert alert-info">
+            <strong>Access Denied!</strong>
+        {% endif %}
+        <section class="container-fluid">
+            <section class="col-lg-8 col-lg-offset-4">
+                <section class="col-12 col-sm-6 col-md-3-center"> 
+                    {% load static %}
+                    <img src="{% static 'images/logo.jpg' %}" alt="SCN INSIGNIA" class="bg-img">
+                    <form class="form-container" role="form" action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <h4 class="text-center-weight-bold">Signal Corps Login</h4>
+                        <div class="form-group">
+                            <p><center>UserName: {{ form.username }}</center></p>
+                            <p><center>Password: {{ form.password }}</center></p>
+                            
+                        </div>
+                         
+                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    </form>
+                </section>
+            </section>
+        </section>
+    </body>
+</html>
